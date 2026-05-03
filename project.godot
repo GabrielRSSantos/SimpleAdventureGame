@@ -51,6 +51,8 @@ E={
 2d_physics/layer_4="Item"
 2d_physics/layer_5="HitBoxEnemy"
 2d_physics/layer_6="HurtBoxEnemy"
+2d_physics/layer_7="HitBoxPlayer"
+2d_physics/layer_8="HurtBoxPlayer"
 
 [physics]
 

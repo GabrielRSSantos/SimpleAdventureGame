@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1e7my")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hurt",
 "speed": 9.0
 }, {
@@ -299,7 +299,7 @@ radius = 5.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoq75"]
-size = Vector2(10, 19)
+size = Vector2(10, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
 size = Vector2(10, 19)
@@ -357,13 +357,17 @@ stream = ExtResource("8_megsn")
 script = ExtResource("6_52ee3")
 
 [node name="PlayerHitBox" type="Area2D" parent="." unique_id=326250055]
+collision_layer = 64
+collision_mask = 32
 
 [node name="PlayerHitBoxCollision" type="CollisionShape2D" parent="PlayerHitBox" unique_id=63853824]
-position = Vector2(0, 2.5)
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_yoq75")
 debug_color = Color(0, 0.6248248, 0.5284689, 0.41960785)
 
 [node name="PlayerHurtBox" type="Area2D" parent="." unique_id=900761084]
+collision_layer = 128
+collision_mask = 16
 
 [node name="PlayerHurtBoxCollision" type="CollisionShape2D" parent="PlayerHurtBox" unique_id=2109868710]
 position = Vector2(0, 2.5)

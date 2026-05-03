@@ -128,8 +128,9 @@ sprite_frames = SubResource("SpriteFrames_tk7xo")
 animation = &"Walk"
 frame_progress = 0.7716074
 
-[node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=87463132]
+[node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=87463132 groups=["Enemy"]]
 collision_layer = 16
+collision_mask = 128
 
 [node name="EnemyHitBoxCollision" type="CollisionShape2D" parent="EnemyHitBoxArea" unique_id=1222308065]
 position = Vector2(0, -1.5)
@@ -138,6 +139,7 @@ debug_color = Color(0, 0.6397443, 0.35249448, 0.41960785)
 
 [node name="EnemyHurtBoxArea" type="Area2D" parent="." unique_id=310097077 groups=["Enemy"]]
 collision_layer = 32
+collision_mask = 64
 
 [node name="EnemyHurtBoxCollision" type="CollisionShape2D" parent="EnemyHurtBoxArea" unique_id=859894175]
 position = Vector2(0, 6)
