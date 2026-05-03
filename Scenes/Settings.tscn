@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://dyjfrtqub34ae"]
+
+[ext_resource type="Texture2D" uid="uid://bwpbdxy5egm7j" path="res://Assets/Spritesheets/Spritesheet_UI_Flat.png" id="1_4hxq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipgag"]
+bg_color = Color(0.16000003, 0.52400005, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrknh"]
+bg_color = Color(0.13760002, 0.45064005, 0.86, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1nw0"]
+bg_color = Color(0.16000003, 0.52400005, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjqtt"]
+bg_color = Color(0.16000003, 0.52400005, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppjuv"]
+bg_color = Color(0.13760002, 0.45064005, 0.86, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="Theme" id="Theme_mjqtt"]
+Button/styles/hover = SubResource("StyleBoxFlat_ipgag")
+Button/styles/normal = SubResource("StyleBoxFlat_yrknh")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_w1nw0")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_w1nw0")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_yrknh")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_yrknh")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_mjqtt")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_ppjuv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flfri"]
+atlas = ExtResource("1_4hxq3")
+region = Rect2(128, 29, 96, 195)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrknh"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 30.0
+texture = SubResource("AtlasTexture_flfri")
+region_rect = Rect2(0, 3, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1nw0"]
+atlas = ExtResource("1_4hxq3")
+region = Rect2(480, 74, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hxq3"]
+atlas = ExtResource("1_4hxq3")
+region = Rect2(480, 74, 32, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flfri"]
+content_margin_top = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hxq3"]
+bg_color = Color(0.3697068, 0.5987085, 0.3727591, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+expand_margin_right = 12.0
+
+[node name="Settings" type="Control" unique_id=1617398902]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_mjqtt")
+
+[node name="Background" type="PanelContainer" parent="." unique_id=356834260]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -100.0
+offset_right = 122.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yrknh")
+
+[node name="Items" type="VBoxContainer" parent="Background" unique_id=1893225852]
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="Volume" type="HBoxContainer" parent="Background/Items" unique_id=1824768751]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VolumeLabel" type="Label" parent="Background/Items/Volume" unique_id=1098279148]
+layout_mode = 2
+text = "Volume "
+
+[node name="HSlider" type="HSlider" parent="Background/Items/Volume" unique_id=105051882]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("AtlasTexture_w1nw0")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_4hxq3")
+theme_override_styles/slider = SubResource("StyleBoxFlat_flfri")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4hxq3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4hxq3")
+value = 50.0
+
+[node name="Language" type="HBoxContainer" parent="Background/Items" unique_id=1996655028]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LanguageLabel" type="Label" parent="Background/Items/Language" unique_id=128716854]
+layout_mode = 2
+text = "Language"
+
+[node name="OptionButton" type="OptionButton" parent="Background/Items/Language" unique_id=174354515]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Portugues"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="LastButtons" type="HBoxContainer" parent="Background/Items" unique_id=1006114496]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Confirm" type="Button" parent="Background/Items/LastButtons" unique_id=506807354]
+layout_mode = 2
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="Background/Items/LastButtons" unique_id=1927258201]
+layout_mode = 2
+text = "Cancel"
