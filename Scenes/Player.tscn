@@ -9,7 +9,32 @@
 [ext_resource type="Script" uid="uid://bdrxpnv1sooku" path="res://Scripts/PlayerStates/jump_state.gd" id="5_nn08x"]
 [ext_resource type="Script" uid="uid://d3l2f6y1djqvs" path="res://Scripts/PlayerStates/fall_state.gd" id="6_52ee3"]
 [ext_resource type="Script" uid="uid://bf8qu5uy7p4jn" path="res://Scripts/PlayerStates/hurt_state.gd" id="6_yoq75"]
+[ext_resource type="AudioStream" uid="uid://cgyrro8gconn" path="res://Assets/sounds/hurt.wav" id="7_ksbbd"]
 [ext_resource type="AudioStream" uid="uid://b5uepo4yvogic" path="res://Assets/sounds/jump.wav" id="8_megsn"]
+
+[sub_resource type="GDScript" id="GDScript_ksbbd"]
+script/source = "extends Camera2D
+
+var shake_strength: float = 0.0
+var shake_fade: float = 5.0 # Velocidade com que o tremor diminui
+
+func _process(delta: float) -> void:
+	if shake_strength > 0:
+		shake_strength = lerp(shake_strength, 0.0, shake_fade * delta)
+		
+		offset = random_offset()
+	else:
+		offset = Vector2.ZERO
+
+func apply_shake(strength: float) -> void:
+	shake_strength = strength
+
+func random_offset() -> Vector2:
+	return Vector2(
+		randf_range(-shake_strength, shake_strength),
+		randf_range(-shake_strength, shake_strength)
+	)
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_megsn"]
 font = ExtResource("2_bhhdu")
@@ -299,7 +324,7 @@ radius = 5.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoq75"]
-size = Vector2(10, 3)
+size = Vector2(11, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksbbd"]
 size = Vector2(10, 19)
@@ -312,6 +337,7 @@ script = ExtResource("1_dewec")
 zoom = Vector2(3.76, 3.76)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = SubResource("GDScript_ksbbd")
 
 [node name="LabelState" type="Label" parent="." unique_id=301612766]
 texture_filter = 1
@@ -344,6 +370,9 @@ script = ExtResource("3_nn08x")
 [node name="Hurt" type="Node" parent="StateMachine" unique_id=114774603]
 script = ExtResource("6_yoq75")
 
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="StateMachine/Hurt" unique_id=363443040]
+stream = ExtResource("7_ksbbd")
+
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1168056580]
 script = ExtResource("4_52ee3")
 
@@ -356,16 +385,16 @@ stream = ExtResource("8_megsn")
 [node name="Fall" type="Node" parent="StateMachine" unique_id=5673143]
 script = ExtResource("6_52ee3")
 
-[node name="PlayerHitBox" type="Area2D" parent="." unique_id=326250055]
+[node name="PlayerHitBox" type="Area2D" parent="." unique_id=326250055 groups=["Player"]]
 collision_layer = 64
 collision_mask = 32
 
 [node name="PlayerHitBoxCollision" type="CollisionShape2D" parent="PlayerHitBox" unique_id=63853824]
-position = Vector2(0, 13.5)
+position = Vector2(-0.5, 13.5)
 shape = SubResource("RectangleShape2D_yoq75")
 debug_color = Color(0, 0.6248248, 0.5284689, 0.41960785)
 
-[node name="PlayerHurtBox" type="Area2D" parent="." unique_id=900761084]
+[node name="PlayerHurtBox" type="Area2D" parent="." unique_id=900761084 groups=["Player"]]
 collision_layer = 128
 collision_mask = 16
 
@@ -374,4 +403,5 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_ksbbd")
 debug_color = Color(0.9311801, 2.820462e-05, 0.6558241, 0.41960785)
 
+[connection signal="area_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_area_entered"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

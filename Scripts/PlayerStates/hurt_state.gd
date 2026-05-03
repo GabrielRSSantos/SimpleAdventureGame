@@ -4,6 +4,8 @@ extends PlayerState
 @export var knockback_vertical: float = -100.0
 
 func enter(previous_state_path: String, data := {}) -> void:
+	$HurtAudio.play()
+	$"../../PlayerCamera".apply_shake(2)
 	player.label_state.text = "HURT"
 	print("HURT")
 	var face_direction: float = -1.0 if player.animation_player.flip_h else 1.0
