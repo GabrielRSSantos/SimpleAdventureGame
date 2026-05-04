@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c2tufot3c7gif" path="res://Assets/sprites/world_tileset.png" id="1_5cjrv"]
 [ext_resource type="PackedScene" uid="uid://uv7cfj3fgpci" path="res://Scenes/Player.tscn" id="2_j0p05"]
-[ext_resource type="PackedScene" uid="uid://c76g0oh3jmmtn" path="res://Scenes/ItemsScene/coin.tscn" id="3_5nsto"]
-[ext_resource type="PackedScene" uid="uid://bvgk7pr34y4qx" path="res://Scenes/enemy.tscn" id="4_gjpho"]
+[ext_resource type="PackedScene" path="res://Scenes/ItemsScene/coin.tscn" id="3_5nsto"]
+[ext_resource type="PackedScene" uid="uid://hhcrkyvo6idw" path="res://Scenes/Enemy.tscn" id="4_gjpho"]
 [ext_resource type="AudioStream" uid="uid://blwhpi3456tmn" path="res://Assets/music/time_for_adventure.mp3" id="5_p70al"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0p05"]

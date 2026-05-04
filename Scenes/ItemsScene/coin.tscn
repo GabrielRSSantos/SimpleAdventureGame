@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c76g0oh3jmmtn"]
+[gd_scene format=3 uid="uid://bbjdrwi7qum21"]
 
 [ext_resource type="Texture2D" uid="uid://tiylelcqquf4" path="res://Assets/sprites/coin.png" id="1_2qo34"]
 [ext_resource type="Script" uid="uid://cfoyyrsnp3ahs" path="res://Scripts/coin.gd" id="1_jgi06"]

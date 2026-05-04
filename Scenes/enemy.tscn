@@ -1,7 +1,13 @@
-[gd_scene format=3 uid="uid://bvgk7pr34y4qx"]
+[gd_scene format=3 uid="uid://hhcrkyvo6idw"]
 
 [ext_resource type="Script" uid="uid://bnec5lgmshnqv" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://dmwqfalsmxuew" path="res://Assets/sprites/slime_green.png" id="2_afpow"]
+[ext_resource type="Script" uid="uid://c7gc1oxt8bpru" path="res://Scripts/State/state_machine.gd" id="3_xeo28"]
+[ext_resource type="Script" uid="uid://bwqi1nwcljotg" path="res://Scripts/EnemyStates/idle_state.gd" id="4_kpr8r"]
+[ext_resource type="Script" uid="uid://bucmjb6h2npag" path="res://Scripts/EnemyStates/hurt_state.gd" id="5_6bs3c"]
+[ext_resource type="Script" uid="uid://conle1ofey6ua" path="res://Scripts/EnemyStates/walk_state.gd" id="5_mo1ky"]
+[ext_resource type="Script" uid="uid://beymhtmxe31i2" path="res://Scripts/EnemyStates/dead_state.gd" id="5_uoxpr"]
+[ext_resource type="Script" uid="uid://o5px00lp1kye" path="res://Scripts/EnemyStates/patrol_state.gd" id="6_6bs3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(16, 12)
@@ -125,7 +131,7 @@ shape = SubResource("RectangleShape2D_287tu")
 
 [node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=1918667043]
 sprite_frames = SubResource("SpriteFrames_tk7xo")
-animation = &"Idle"
+animation = &"Walk"
 autoplay = "Idle"
 
 [node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=87463132 groups=["Enemy"]]
@@ -149,5 +155,32 @@ debug_color = Color(0.9658696, 5.7756904e-07, 0.48699313, 0.41960785)
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=53166798]
 position = Vector2(8, 0)
 collision_mask = 4
+
+[node name="StateMachine" type="Node" parent="." unique_id=848281053]
+script = ExtResource("3_xeo28")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=473304684]
+script = ExtResource("4_kpr8r")
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=762049669]
+script = ExtResource("5_uoxpr")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=99006651]
+script = ExtResource("5_6bs3c")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=85227894]
+script = ExtResource("5_mo1ky")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1315995412]
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=947020776]
+script = ExtResource("6_6bs3c")
+
+[node name="LabelState" type="Label" parent="." unique_id=1183181540]
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 23.0
+offset_bottom = -1.0
+text = "TESTE"
 
 [connection signal="area_entered" from="EnemyHurtBoxArea" to="." method="_on_enemy_hurt_box_area_area_entered"]
