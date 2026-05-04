@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uv7cfj3fgpci" path="res://Scenes/Player.tscn" id="2_j0p05"]
 [ext_resource type="PackedScene" uid="uid://c76g0oh3jmmtn" path="res://Scenes/ItemsScene/coin.tscn" id="3_5nsto"]
 [ext_resource type="PackedScene" uid="uid://bvgk7pr34y4qx" path="res://Scenes/enemy.tscn" id="4_gjpho"]
+[ext_resource type="AudioStream" uid="uid://blwhpi3456tmn" path="res://Assets/music/time_for_adventure.mp3" id="5_p70al"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0p05"]
 texture = ExtResource("1_5cjrv")
@@ -209,4 +210,7 @@ position = Vector2(-296, -24)
 position = Vector2(-280, -24)
 
 [node name="Enemy" parent="." unique_id=558058385 instance=ExtResource("4_gjpho")]
-position = Vector2(-432, -13)
+position = Vector2(-414, -15)
+
+[node name="WorldAudio" type="AudioStreamPlayer" parent="." unique_id=884820294]
+stream = ExtResource("5_p70al")

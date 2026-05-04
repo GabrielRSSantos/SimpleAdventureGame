@@ -28,10 +28,17 @@ func _on_enemy_hurt_box_area_area_entered(area: Area2D) -> void:
 func enemy_patrol() -> void:
 	var limit_right = start_position.x + distance_to_patrol
 	var limit_left = start_position.x - distance_to_patrol
+	
+	if !$RayCast2D.is_colliding():
+		direction *= -1
+		$EnemySprite.flip_h = !$EnemySprite.flip_h
+		$RayCast2D.position.x *= -1
 
 	if global_position.x >= limit_right:
 		direction = -1
+		$RayCast2D.position.x = -8
 		$EnemySprite.flip_h = true
 	elif global_position.x <= limit_left:
 		direction = 1
+		$RayCast2D.position.x = 8
 		$EnemySprite.flip_h = false
