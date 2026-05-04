@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://68i722gj7wkg"]
+
+[ext_resource type="Texture2D" uid="uid://xhyb6r0olsc1" path="res://Assets/sprites/enemies-spritesheet.png" id="1_fse1u"]
+[ext_resource type="Script" uid="uid://dlena6kls0uh0" path="res://Scripts/enemy_bat.gd" id="1_ysgwv"]
+[ext_resource type="Script" uid="uid://c7gc1oxt8bpru" path="res://Scripts/State/state_machine.gd" id="2_ysgwv"]
+[ext_resource type="Script" uid="uid://bsitu5lwk21f8" path="res://Scripts/FlyEnemyStates/idle_state.gd" id="3_2iht0"]
+[ext_resource type="Texture2D" uid="uid://dq84galu5uafw" path="res://Assets/sprites/bat_enemy_hurt.png" id="3_yh5ne"]
+[ext_resource type="Script" uid="uid://cv2v32vci7fvo" path="res://Scripts/FlyEnemyStates/patrol_state.gd" id="5_2iht0"]
+[ext_resource type="Script" uid="uid://bwfaifxathtwf" path="res://Scripts/FlyEnemyStates/hurt_state.gd" id="5_d6do7"]
+[ext_resource type="Script" uid="uid://cynkjpiprs317" path="res://Scripts/FlyEnemyStates/dead_state.gd" id="8_ndxbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fse1u"]
+size = Vector2(16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6do7"]
+atlas = ExtResource("1_fse1u")
+region = Rect2(60, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysgwv"]
+atlas = ExtResource("1_fse1u")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iht0"]
+atlas = ExtResource("1_fse1u")
+region = Rect2(20, 80, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ysgwv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6do7")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"Dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yh5ne")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysgwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iht0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iht0"]
+size = Vector2(16, 10.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6do7"]
+size = Vector2(16, 4)
+
+[node name="EnemyBat" type="CharacterBody2D" unique_id=1418861841]
+script = ExtResource("1_ysgwv")
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=1822474566]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_fse1u")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=631207009]
+sprite_frames = SubResource("SpriteFrames_ysgwv")
+animation = &"Attack"
+autoplay = "Idle"
+flip_h = true
+
+[node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=770569436 groups=["Enemy"]]
+collision_layer = 16
+collision_mask = 128
+
+[node name="EnemyHitBoxCollision" type="CollisionShape2D" parent="EnemyHitBoxArea" unique_id=206701809]
+position = Vector2(0, 3.8125)
+shape = SubResource("RectangleShape2D_2iht0")
+debug_color = Color(0, 0.6397443, 0.35249448, 0.41960785)
+
+[node name="EnemyHurtBoxArea" type="Area2D" parent="." unique_id=308179872 groups=["Enemy"]]
+collision_layer = 32
+collision_mask = 64
+
+[node name="EnemyHurtBoxCollision" type="CollisionShape2D" parent="EnemyHurtBoxArea" unique_id=466867077]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_d6do7")
+debug_color = Color(0.9658696, 5.7756904e-07, 0.48699313, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=995358898]
+position = Vector2(8, 0)
+collision_mask = 4
+
+[node name="StateMachine" type="Node" parent="." unique_id=1802460663]
+script = ExtResource("2_ysgwv")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1959207828]
+script = ExtResource("3_2iht0")
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=263337374]
+script = ExtResource("5_2iht0")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1287778278]
+script = ExtResource("5_d6do7")
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=425266456]
+script = ExtResource("8_ndxbs")
+
+[node name="LabelState" type="Label" parent="." unique_id=1186704191]
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 23.0
+offset_bottom = -1.0
+text = "TESTE"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="EnemyHurtBoxArea" to="." method="_on_enemy_hurt_box_area_area_entered"]

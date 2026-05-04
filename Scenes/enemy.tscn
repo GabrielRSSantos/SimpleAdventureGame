@@ -76,6 +76,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_auwsv")
 }],
 "loop": false,
+"name": &"Dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0830c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghaa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dp5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwsv")
+}],
+"loop": false,
 "name": &"Hurt",
 "speed": 8.0
 }, {
@@ -131,7 +148,7 @@ shape = SubResource("RectangleShape2D_287tu")
 
 [node name="EnemySprite" type="AnimatedSprite2D" parent="." unique_id=1918667043]
 sprite_frames = SubResource("SpriteFrames_tk7xo")
-animation = &"Walk"
+animation = &"Dead"
 autoplay = "Idle"
 
 [node name="EnemyHitBoxArea" type="Area2D" parent="." unique_id=87463132 groups=["Enemy"]]
