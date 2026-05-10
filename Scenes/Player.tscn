@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bf8qu5uy7p4jn" path="res://Scripts/PlayerStates/hurt_state.gd" id="6_yoq75"]
 [ext_resource type="AudioStream" uid="uid://cgyrro8gconn" path="res://Assets/sounds/hurt.wav" id="7_ksbbd"]
 [ext_resource type="AudioStream" uid="uid://b5uepo4yvogic" path="res://Assets/sounds/jump.wav" id="8_megsn"]
+[ext_resource type="Texture2D" uid="uid://dhetny2166rc" path="res://Assets/Spritesheets/Inventory_9Slices.png" id="12_glx4g"]
+[ext_resource type="Texture2D" uid="uid://dayrneyjjea4" path="res://Assets/Spritesheets/GUI_1x.png" id="13_miouo"]
 
 [sub_resource type="GDScript" id="GDScript_ksbbd"]
 script/source = "extends Camera2D
@@ -367,12 +369,26 @@ _data = {
 &"RESET": SubResource("Animation_glx4g")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmcrb"]
+atlas = ExtResource("12_glx4g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_miouo"]
+texture = SubResource("AtlasTexture_vmcrb")
+region_rect = Rect2(0, -2, 32, 34)
+
+[sub_resource type="Theme" id="Theme_glx4g"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_miouo")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teras"]
+atlas = ExtResource("13_miouo")
+region = Rect2(96, 0, 24, 24)
+
 [node name="Player" type="CharacterBody2D" unique_id=1290054285 groups=["Player"]]
 collision_mask = 397
 script = ExtResource("1_dewec")
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1970679866]
-zoom = Vector2(3.76, 3.76)
+zoom = Vector2(3.8, 3.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = SubResource("GDScript_ksbbd")
@@ -451,6 +467,34 @@ debug_color = Color(0.9311801, 2.820462e-05, 0.6558241, 0.41960785)
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="." unique_id=1844260454]
 libraries/ = SubResource("AnimationLibrary_miouo")
+
+[node name="PlayerCanvasLayer" type="CanvasLayer" parent="." unique_id=879769367]
+visible = false
+
+[node name="Menu" type="Control" parent="PlayerCanvasLayer" unique_id=541651197]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_glx4g")
+
+[node name="MenuContainer" type="NinePatchRect" parent="PlayerCanvasLayer/Menu" unique_id=439634930]
+custom_minimum_size = Vector2(900, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_teras")
 
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_area_entered"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

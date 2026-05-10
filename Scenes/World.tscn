@@ -2,10 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://c2tufot3c7gif" path="res://Assets/sprites/world_tileset.png" id="1_5cjrv"]
 [ext_resource type="PackedScene" uid="uid://uv7cfj3fgpci" path="res://Scenes/Player.tscn" id="2_j0p05"]
-[ext_resource type="PackedScene" uid="uid://bbjdrwi7qum21" path="res://Scenes/ItemsScene/coin.tscn" id="3_5nsto"]
+[ext_resource type="PackedScene" uid="uid://bbjdrwi7qum21" path="res://Scenes/ItemsScene/Coin.tscn" id="3_5nsto"]
 [ext_resource type="PackedScene" uid="uid://hhcrkyvo6idw" path="res://Scenes/Enemy.tscn" id="4_gjpho"]
 [ext_resource type="AudioStream" uid="uid://blwhpi3456tmn" path="res://Assets/music/time_for_adventure.mp3" id="5_p70al"]
 [ext_resource type="PackedScene" uid="uid://68i722gj7wkg" path="res://Scenes/EnemyBat.tscn" id="6_45d1s"]
+[ext_resource type="Texture2D" uid="uid://cgir5gloyh7jq" path="res://Assets/Spritesheets/Background_2.png" id="7_q2d71"]
+[ext_resource type="Texture2D" uid="uid://bmfbkxrfwo884" path="res://Assets/Spritesheets/Background_1.png" id="7_y7y61"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0p05"]
 texture = ExtResource("1_5cjrv")
@@ -218,3 +220,23 @@ stream = ExtResource("5_p70al")
 
 [node name="EnemyBat" parent="." unique_id=1418861841 instance=ExtResource("6_45d1s")]
 position = Vector2(-139, -46)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=32269051]
+z_index = -2
+position = Vector2(759, -104)
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D" unique_id=1091930379]
+repeat_size = Vector2(495, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D2" unique_id=978525913]
+texture = ExtResource("7_q2d71")
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D" unique_id=282019856]
+repeat_size = Vector2(495, 0)
+autoscroll = Vector2(20, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=1974328720]
+texture = ExtResource("7_y7y61")
