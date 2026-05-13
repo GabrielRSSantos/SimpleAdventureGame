@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dyjfrtqub34ae"]
 
 [ext_resource type="Texture2D" uid="uid://bwpbdxy5egm7j" path="res://Assets/Spritesheets/Spritesheet_UI_Flat.png" id="1_4hxq3"]
-[ext_resource type="Texture2D" uid="uid://cf8eipwbi0mqd" path="res://Assets/Spritesheets/Inventory_Slot_1.png" id="1_flfri"]
 [ext_resource type="FontFile" uid="uid://ckhfg8hsy3xe6" path="res://Assets/fonts/PixelOperator8.ttf" id="1_yrknh"]
+[ext_resource type="Texture2D" uid="uid://bhwylm3jt4cty" path="res://Assets/Spritesheets/Retro Inventory/Scaled 3x/Inventory_9Slices.png" id="4_mjqtt"]
+[ext_resource type="Texture2D" uid="uid://c36tag17srsik" path="res://Assets/Spritesheets/Retro Inventory/Scaled 3x/Inventory_Slot_1.png" id="4_w1nw0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w1nw0"]
 load_path = "res://.godot/imported/Inventory_Slot_1.png-10ef0e0fa7acf18fb86a5a268cff6cfd.ctex"
@@ -19,18 +20,22 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(1, 1, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipgag"]
-atlas = ExtResource("1_flfri")
-region = Rect2(5, 5, 21, 21)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_646k0"]
-texture = SubResource("AtlasTexture_ipgag")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-region_rect = Rect2(1, 1, 20, 20)
+texture = ExtResource("4_w1nw0")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+region_rect = Rect2(1, 1, 95, 95)
 modulate_color = Color(0.737193, 0.7371929, 0.7371929, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1nw0"]
+atlas = ExtResource("1_4hxq3")
+region = Rect2(480, 42, 32, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppjuv"]
+atlas = ExtResource("1_4hxq3")
+region = Rect2(480, 29, 32, 12)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1nw0"]
 bg_color = Color(0.16000003, 0.52400005, 1, 1)
@@ -79,6 +84,10 @@ Button/font_sizes/font_size = 12
 Button/fonts/font = ExtResource("1_yrknh")
 Button/styles/hover = SubResource("StyleBoxTexture_ppjuv")
 Button/styles/normal = SubResource("StyleBoxTexture_646k0")
+HSlider/icons/grabber = SubResource("AtlasTexture_w1nw0")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_ppjuv")
+HSlider/icons/tick = null
 Label/font_sizes/font_size = 12
 Label/fonts/font = ExtResource("1_yrknh")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_w1nw0")
@@ -89,26 +98,10 @@ PopupMenu/styles/hover = SubResource("StyleBoxFlat_mjqtt")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_ppjuv")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrknh"]
-atlas = ExtResource("1_flfri")
-region = Rect2(5, 5, 22, 22)
+atlas = ExtResource("4_mjqtt")
+region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1nw0"]
-atlas = ExtResource("1_4hxq3")
-region = Rect2(480, 74, 32, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hxq3"]
-atlas = ExtResource("1_4hxq3")
-region = Rect2(480, 74, 32, 12)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flfri"]
-content_margin_top = 5.0
-bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hxq3"]
-bg_color = Color(0.3697068, 0.5987085, 0.3727591, 1)
-corner_radius_top_left = 4
-corner_radius_bottom_left = 4
-expand_margin_right = 12.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrknh"]
 
 [node name="Settings" type="Control" unique_id=1617398902]
 layout_mode = 3
@@ -124,30 +117,34 @@ theme = SubResource("Theme_mjqtt")
 [node name="Background" type="NinePatchRect" parent="." unique_id=1261566165]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -122.0
-offset_top = -100.0
-offset_right = 122.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_yrknh")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="Background" unique_id=782181182]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("AtlasTexture_yrknh")
+region_rect = Rect2(0, 0, 96, 95)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Background" unique_id=782181182]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -87.5
+offset_right = 141.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yrknh")
 
 [node name="Items" type="VBoxContainer" parent="Background/PanelContainer" unique_id=1893225852]
 layout_mode = 2
@@ -165,11 +162,6 @@ text = "Volume "
 [node name="HSlider" type="HSlider" parent="Background/PanelContainer/Items/Volume" unique_id=105051882]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-theme_override_icons/grabber = SubResource("AtlasTexture_w1nw0")
-theme_override_icons/grabber_highlight = SubResource("AtlasTexture_4hxq3")
-theme_override_styles/slider = SubResource("StyleBoxFlat_flfri")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4hxq3")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4hxq3")
 value = 50.0
 
 [node name="Language" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1996655028]
@@ -191,7 +183,6 @@ popup/item_1/id = 1
 
 [node name="LastButtons" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1006114496]
 layout_mode = 2
-theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Confirm" type="Button" parent="Background/PanelContainer/Items/LastButtons" unique_id=506807354]

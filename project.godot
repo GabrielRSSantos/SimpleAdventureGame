@@ -15,8 +15,15 @@ run/main_scene="uid://cfc5s4j80owm2"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerManager="*uid://c2gclopmx0n52"
+
 [display]
 
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [global_group]

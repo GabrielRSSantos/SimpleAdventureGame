@@ -9,7 +9,7 @@ class_name Enemy extends CharacterBody2D
 @export var distance_to_patrol := 100
 @onready var start_position = global_position
 
-const SPEED = 50.0
+const SPEED = 20.0
 const JUMP_VELOCITY = -400.0
 var direction := 1
 

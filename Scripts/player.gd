@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-var SPEED = 200.0
+var SPEED = 100.0
 var JUMP_VELOCITY = -300.0
 var gravity = 800
 
