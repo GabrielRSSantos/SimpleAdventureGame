@@ -116,10 +116,14 @@ theme = SubResource("Theme_mjqtt")
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=1261566165]
 texture_filter = 1
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -18.0
+offset_right = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_yrknh")
@@ -130,6 +134,7 @@ patch_margin_right = 18
 patch_margin_bottom = 18
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Background" unique_id=782181182]
 layout_mode = 1
@@ -138,9 +143,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.0
+offset_left = -128.0
 offset_top = -87.5
-offset_right = 141.0
+offset_right = 128.0
 offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -153,11 +158,12 @@ alignment = 1
 
 [node name="Volume" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1824768751]
 layout_mode = 2
-theme_override_constants/separation = 40
 
 [node name="VolumeLabel" type="Label" parent="Background/PanelContainer/Items/Volume" unique_id=1098279148]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-text = "Volume "
+text = "Volume"
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Background/PanelContainer/Items/Volume" unique_id=105051882]
 custom_minimum_size = Vector2(100, 30)
@@ -166,11 +172,12 @@ value = 50.0
 
 [node name="Language" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1996655028]
 layout_mode = 2
-theme_override_constants/separation = 25
 
 [node name="LanguageLabel" type="Label" parent="Background/PanelContainer/Items/Language" unique_id=128716854]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 text = "Language"
+vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Background/PanelContainer/Items/Language" unique_id=174354515]
 layout_mode = 2

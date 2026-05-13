@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cfc5s4j80owm2"]
 
 [ext_resource type="Texture2D" uid="uid://c2tufot3c7gif" path="res://Assets/sprites/world_tileset.png" id="1_5cjrv"]
+[ext_resource type="Script" uid="uid://cwdbykgapp55w" path="res://Scripts/WorldsScripts/world01.gd" id="1_uo7di"]
 [ext_resource type="PackedScene" uid="uid://uv7cfj3fgpci" path="res://Scenes/Player.tscn" id="2_j0p05"]
 [ext_resource type="PackedScene" uid="uid://bbjdrwi7qum21" path="res://Scenes/ItemsScene/coin.tscn" id="3_5nsto"]
 [ext_resource type="PackedScene" uid="uid://hhcrkyvo6idw" path="res://Scenes/enemy.tscn" id="4_gjpho"]
@@ -181,6 +182,7 @@ physics_layer_0/collision_mask = 11
 sources/1 = SubResource("TileSetAtlasSource_j0p05")
 
 [node name="World" type="Node2D" unique_id=1233261353]
+script = ExtResource("1_uo7di")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=796859462]
 texture_filter = 1
