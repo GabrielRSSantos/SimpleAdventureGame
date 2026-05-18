@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://xxofpqy13ehk"]
+
+[ext_resource type="Theme" uid="uid://dn05xfutki7rf" path="res://Assets/Themes/ui_theme.tres" id="1_tr2i4"]
+[ext_resource type="Script" uid="uid://dhpjgyu506ei6" path="res://Scripts/main_scene.gd" id="4_7rqgy"]
+
+[node name="MainScene" type="Control" unique_id=403321039]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tr2i4")
+script = ExtResource("4_7rqgy")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1304291347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="." unique_id=1140002811]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.5
+offset_top = 57.0
+offset_right = 109.5
+offset_bottom = 80.0
+grow_horizontal = 2
+text = "A SIMPLE ADVENTURE GAME"
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=992037211]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -133.0
+offset_right = 183.0
+offset_bottom = -20.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="StartGame" type="Button" parent="Menu" unique_id=1414513231]
+layout_mode = 2
+text = "START GAME"
+
+[node name="Setting" type="Button" parent="Menu" unique_id=1292770365]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="Menu" unique_id=1950221470]
+layout_mode = 2
+text = "QUIT"
+
+[connection signal="pressed" from="Menu/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Menu/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]

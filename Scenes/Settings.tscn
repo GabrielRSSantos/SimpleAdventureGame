@@ -1,101 +1,8 @@
 [gd_scene format=3 uid="uid://dyjfrtqub34ae"]
 
-[ext_resource type="Texture2D" uid="uid://bwpbdxy5egm7j" path="res://Assets/Spritesheets/Spritesheet_UI_Flat.png" id="1_4hxq3"]
-[ext_resource type="FontFile" uid="uid://ckhfg8hsy3xe6" path="res://Assets/fonts/PixelOperator8.ttf" id="1_yrknh"]
+[ext_resource type="Script" uid="uid://ciisan2te83cg" path="res://Scripts/GlobalScripts/settings.gd" id="1_yrknh"]
+[ext_resource type="Theme" uid="uid://dn05xfutki7rf" path="res://Assets/Themes/ui_theme.tres" id="2_w1nw0"]
 [ext_resource type="Texture2D" uid="uid://bhwylm3jt4cty" path="res://Assets/Spritesheets/Retro Inventory/Scaled 3x/Inventory_9Slices.png" id="4_mjqtt"]
-[ext_resource type="Texture2D" uid="uid://c36tag17srsik" path="res://Assets/Spritesheets/Retro Inventory/Scaled 3x/Inventory_Slot_1.png" id="4_w1nw0"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w1nw0"]
-load_path = "res://.godot/imported/Inventory_Slot_1.png-10ef0e0fa7acf18fb86a5a268cff6cfd.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjqtt"]
-atlas = SubResource("CompressedTexture2D_w1nw0")
-region = Rect2(5, 5, 21, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppjuv"]
-texture = SubResource("AtlasTexture_mjqtt")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-region_rect = Rect2(1, 1, 20, 20)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_646k0"]
-texture = ExtResource("4_w1nw0")
-texture_margin_left = 30.0
-texture_margin_top = 30.0
-texture_margin_right = 30.0
-texture_margin_bottom = 30.0
-region_rect = Rect2(1, 1, 95, 95)
-modulate_color = Color(0.737193, 0.7371929, 0.7371929, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1nw0"]
-atlas = ExtResource("1_4hxq3")
-region = Rect2(480, 42, 32, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppjuv"]
-atlas = ExtResource("1_4hxq3")
-region = Rect2(480, 29, 32, 12)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1nw0"]
-bg_color = Color(0.16000003, 0.52400005, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrknh"]
-bg_color = Color(0.13760002, 0.45064005, 0.86, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 1
-shadow_offset = Vector2(-1, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjqtt"]
-bg_color = Color(0.16000003, 0.52400005, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppjuv"]
-bg_color = Color(0.13760002, 0.45064005, 0.86, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-shadow_color = Color(0, 0, 0, 1)
-shadow_size = 1
-shadow_offset = Vector2(-1, 2)
-
-[sub_resource type="Theme" id="Theme_mjqtt"]
-Button/font_sizes/font_size = 12
-Button/fonts/font = ExtResource("1_yrknh")
-Button/styles/hover = SubResource("StyleBoxTexture_ppjuv")
-Button/styles/normal = SubResource("StyleBoxTexture_646k0")
-HSlider/icons/grabber = SubResource("AtlasTexture_w1nw0")
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = SubResource("AtlasTexture_ppjuv")
-HSlider/icons/tick = null
-Label/font_sizes/font_size = 12
-Label/fonts/font = ExtResource("1_yrknh")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_w1nw0")
-OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_w1nw0")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_yrknh")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_yrknh")
-PopupMenu/styles/hover = SubResource("StyleBoxFlat_mjqtt")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_ppjuv")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrknh"]
 atlas = ExtResource("4_mjqtt")
@@ -103,21 +10,12 @@ region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrknh"]
 
-[node name="Settings" type="Control" unique_id=1617398902]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = SubResource("Theme_mjqtt")
+[node name="Settings" type="CanvasLayer" unique_id=672870149]
+script = ExtResource("1_yrknh")
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=1261566165]
 texture_filter = 1
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -126,6 +24,7 @@ offset_left = -18.0
 offset_right = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_w1nw0")
 texture = SubResource("AtlasTexture_yrknh")
 region_rect = Rect2(0, 0, 96, 95)
 patch_margin_left = 18
@@ -201,3 +100,6 @@ text = "Confirm"
 custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
 text = "Cancel"
+
+[connection signal="pressed" from="Background/PanelContainer/Items/LastButtons/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Background/PanelContainer/Items/LastButtons/Cancel" to="." method="_on_cancel_pressed"]

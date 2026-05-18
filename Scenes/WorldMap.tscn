@@ -1,0 +1,275 @@
+[gd_scene format=4 uid="uid://cwgprm7rtxuui"]
+
+[ext_resource type="Texture2D" uid="uid://dayrneyjjea4" path="res://Assets/Spritesheets/GUI_1x.png" id="1_h0vor"]
+[ext_resource type="FontFile" uid="uid://dbgukb786rvac" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_nnt0k"]
+[ext_resource type="Texture2D" uid="uid://c2tufot3c7gif" path="res://Assets/sprites/world_tileset.png" id="2_lgebn"]
+[ext_resource type="Texture2D" uid="uid://b2r28ac4inrg0" path="res://Assets/sprites/knight.png" id="3_5wnfc"]
+[ext_resource type="Script" uid="uid://dqk0pxfymnrc" path="res://Scripts/WorldsScripts/world_map_script.gd" id="3_6g17r"]
+[ext_resource type="AudioStream" uid="uid://b5uepo4yvogic" path="res://Assets/sounds/jump.wav" id="5_ovel5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgebn"]
+atlas = ExtResource("1_h0vor")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wnfc"]
+texture = SubResource("AtlasTexture_lgebn")
+texture_margin_left = 4.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(95, 0, 25.012383, 24.637445)
+
+[sub_resource type="Theme" id="Theme_nnt0k"]
+Label/fonts/font = ExtResource("1_nnt0k")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_5wnfc")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wnfc"]
+texture = ExtResource("2_lgebn")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nnt0k"]
+sources/0 = SubResource("TileSetAtlasSource_5wnfc")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnt0k"]
+atlas = ExtResource("3_5wnfc")
+region = Rect2(9, 9, 13, 19)
+
+[sub_resource type="Animation" id="Animation_6g17r"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(88, 183), Vector2(88, 135.11), Vector2(88, 183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k2sq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88, 183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6b1v"]
+_data = {
+&"Jump": SubResource("Animation_6g17r"),
+&"RESET": SubResource("Animation_k2sq4")
+}
+
+[node name="WorldMap" type="Control" unique_id=1014472762]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_nnt0k")
+script = ExtResource("3_6g17r")
+
+[node name="Background" type="PanelContainer" parent="." unique_id=1804885940]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=205075788]
+tile_map_data = PackedByteArray("AAABAAwAAAAGAAkAAAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAALAAwAAAAEAAAAAAAMAAwAAAAEAAAAAAANAAwAAAAEAAAAAAAOAAwAAAAEAAAAAAAPAAwAAAAEAAAAAAAQAAwAAAAEAAAAAAARAAwAAAAEAAAAAAAVAAwAAAAGAAAAAAAWAAwAAAAHAAAAAAAXAAwAAAAGAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAACAAkAAAAAAAMAAAACAAoAAAAAAAQAAAACAAsAAAAAAAUAAAAEAAsAAAAAAAcAAAAGAAsAAAABAAYAAAANAAkAAAAFAAMAAAANAAoAAAAFAAQAAAANAAsAAAAFAAUAAAALAAsAAAAFAAYAAAAQAAsAAAAEAAgAAAAYAAwAAAAGAAkAAAAYAA0AAAAGAAoAAAAWAA0AAAAGAAoAAAAXAA0AAAAGAAoAAAAVAA0AAAAGAAoAAAAZAA0AAAAGAAoAAAAaAA0AAAAGAAoAAAAGAA0AAAAGAAoAAAAHAA0AAAAGAAoAAAAFAA0AAAAGAAoAAAAEAA0AAAAGAAoAAAADAA0AAAAGAAoAAAACAA0AAAAGAAoAAAABAA0AAAAGAAoAAAALAA0AAAAGAAoAAAAMAA0AAAAGAAoAAAANAA0AAAAGAAoAAAAOAA0AAAAGAAoAAAAPAA0AAAAGAAoAAAAQAA0AAAAGAAoAAAARAA0AAAAGAAoAAAAZAAsAAAAGAAIAAAAbAAwAAAAGAAIAAAAbAA0AAAAGAAoAAAAbAA4AAAAGAAoAAAAaAA4AAAAGAAoAAAAZAA4AAAAGAAoAAAAYAA4AAAAGAAoAAAAXAA4AAAAGAAoAAAAWAA4AAAAGAAoAAAAVAA4AAAAGAAoAAAAUAA4AAAAGAAoAAAATAA4AAAAGAAoAAAASAA4AAAAGAAoAAAARAA4AAAAGAAoAAAAQAA4AAAAGAAoAAAAPAA4AAAAGAAoAAAAOAA4AAAAGAAoAAAANAA4AAAAGAAoAAAAKAA0AAAAGAAoAAAAJAA0AAAAGAAoAAAAIAA4AAAAGAAoAAAAHAA4AAAAGAAoAAAAGAA4AAAAGAAoAAAAFAA4AAAAGAAoAAAAEAA4AAAAGAAoAAAADAA4AAAAGAAoAAAACAA4AAAAGAAoAAAABAA4AAAAGAAoAAAAJAA4AAAAGAAoAAAAKAA4AAAAGAAoAAAALAA4AAAAGAAoAAAAIAA0AAAAGAAoAAAAMAA4AAAAGAAoAAAASAA0AAAAGAAoAAAATAA0AAAAGAAoAAAAUAA0AAAAGAAoAAAAcAA0AAAAGAAoAAAAcAA4AAAAGAAoAAAAcAA8AAAAGAAoAAAAKAA8AAAAGAAoAAAAJAA8AAAAGAAoAAAAIAA8AAAAGAAoAAAAHAA8AAAAGAAoAAAAGAA8AAAAGAAoAAAAFAA8AAAAGAAoAAAAEAA8AAAAGAAoAAAADAA8AAAAGAAoAAAACAA8AAAAGAAoAAAABAA8AAAAGAAoAAAAOAA8AAAAGAAoAAAANAA8AAAAGAAoAAAAMAA8AAAAGAAoAAAAPAA8AAAAGAAoAAAAQAA8AAAAGAAoAAAARAA8AAAAGAAoAAAASAA8AAAAGAAoAAAATAA8AAAAGAAoAAAAUAA8AAAAGAAoAAAAVAA8AAAAGAAoAAAAWAA8AAAAGAAoAAAAXAA8AAAAGAAoAAAAYAA8AAAAGAAoAAAAZAA8AAAAGAAoAAAAaAA8AAAAGAAoAAAAbAA8AAAAGAAoAAAALAA8AAAAGAAoAAAAcAAwAAAAGAAkAAAA=")
+tile_set = SubResource("TileSet_nnt0k")
+
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=2105177036]
+position = Vector2(88, 183)
+texture = SubResource("AtlasTexture_nnt0k")
+
+[node name="TitleBox" type="VBoxContainer" parent="." unique_id=346346306]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 53.0
+offset_right = 90.0
+offset_bottom = 103.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="TitleBox" unique_id=1648620747]
+layout_mode = 2
+text = "WORLD 1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TitleBox" unique_id=901787138]
+layout_mode = 2
+text = "GREEN ISLAND"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1464806298]
+libraries/ = SubResource("AnimationLibrary_e6b1v")
+autoplay = &"Jump"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=767617096]
+stream = ExtResource("5_ovel5")
