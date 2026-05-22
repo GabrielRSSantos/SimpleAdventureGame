@@ -32,3 +32,7 @@ func physics_update(_delta: float) -> void:
 func coyote_jump_logic() -> void:
 	if was_on_floor and not player.is_on_floor() and player.velocity.y >= 0:
 		$CoyoteJump.start()
+
+func handle_input(_event) -> void:
+	if _event.is_action_pressed("Q"):
+		finished.emit("Roll")

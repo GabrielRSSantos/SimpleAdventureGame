@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://uv7cfj3fgpci"]
+[gd_scene format=4 uid="uid://uv7cfj3fgpci"]
 
 [ext_resource type="Script" uid="uid://812o07nnalbi" path="res://Scripts/player.gd" id="1_dewec"]
 [ext_resource type="Script" uid="uid://c7gc1oxt8bpru" path="res://Scripts/State/state_machine.gd" id="2_5ixxa"]
@@ -8,11 +8,15 @@
 [ext_resource type="Script" uid="uid://dlcqf7018qtam" path="res://Scripts/PlayerStates/walk_state.gd" id="4_52ee3"]
 [ext_resource type="Script" uid="uid://bdrxpnv1sooku" path="res://Scripts/PlayerStates/jump_state.gd" id="5_nn08x"]
 [ext_resource type="Script" uid="uid://d3l2f6y1djqvs" path="res://Scripts/PlayerStates/fall_state.gd" id="6_52ee3"]
+[ext_resource type="Script" uid="uid://bhir44i03nexd" path="res://Scripts/PlayerStates/roll_state.gd" id="6_o3h8g"]
 [ext_resource type="Script" uid="uid://bf8qu5uy7p4jn" path="res://Scripts/PlayerStates/hurt_state.gd" id="6_yoq75"]
 [ext_resource type="AudioStream" uid="uid://cgyrro8gconn" path="res://Assets/sounds/hurt.wav" id="7_ksbbd"]
 [ext_resource type="AudioStream" uid="uid://b5uepo4yvogic" path="res://Assets/sounds/jump.wav" id="8_megsn"]
-[ext_resource type="Texture2D" uid="uid://dhetny2166rc" path="res://Assets/Spritesheets/Inventory_9Slices.png" id="12_glx4g"]
+[ext_resource type="Theme" uid="uid://dn05xfutki7rf" path="res://Assets/Themes/ui_theme.tres" id="13_arntx"]
 [ext_resource type="Texture2D" uid="uid://dayrneyjjea4" path="res://Assets/Spritesheets/GUI_1x.png" id="13_miouo"]
+[ext_resource type="Texture2D" uid="uid://ol6mfksweglt" path="res://Assets/Spritesheets/Retro Inventory/Original/Inventory.png" id="15_lslt6"]
+[ext_resource type="Texture2D" uid="uid://cyfo26xw7wshf" path="res://Assets/sprites/fruit.png" id="16_ulo2v"]
+[ext_resource type="Texture2D" uid="uid://c2tufot3c7gif" path="res://Assets/sprites/world_tileset.png" id="17_lslt6"]
 
 [sub_resource type="GDScript" id="GDScript_ksbbd"]
 script/source = "extends Camera2D
@@ -263,7 +267,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u7x0b")
 }],
-"loop": true,
+"loop": false,
 "name": &"Roll",
 "speed": 10.0
 }, {
@@ -369,29 +373,204 @@ _data = {
 &"RESET": SubResource("Animation_glx4g")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vmcrb"]
-atlas = ExtResource("12_glx4g")
+[sub_resource type="GDScript" id="GDScript_lslt6"]
+script/source = "extends CanvasLayer
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_miouo"]
-texture = SubResource("AtlasTexture_vmcrb")
-region_rect = Rect2(0, -2, 32, 34)
+@onready var world_1: VBoxContainer = $Menu/VBoxContainer/World1
+@onready var world_2: VBoxContainer = $Menu/VBoxContainer/World2
+@onready var world_3: VBoxContainer = $Menu/VBoxContainer/World3
 
-[sub_resource type="Theme" id="Theme_glx4g"]
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_miouo")
+
+func _ready() -> void:
+	visible = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"E\"):
+		hide_all_worlds()
+		match PlayerManager.props[\"World\"][\"current_world\"]:
+			1:
+				world_1.visible = true
+			2:
+				world_2.visible = true
+			3:
+				world_3.visible = true
+		toggle_pause()
+
+func toggle_pause():
+	var new_state = !get_tree().paused
+	get_tree().paused = new_state
+	visible = new_state
+	
+	if new_state:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func hide_all_worlds() -> void:
+	world_1.visible = false
+	world_2.visible = false
+	world_2.visible = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p516"]
+atlas = ExtResource("13_miouo")
+region = Rect2(96, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_teras"]
 atlas = ExtResource("13_miouo")
 region = Rect2(33, 57, 30, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8p516"]
-atlas = ExtResource("13_miouo")
-region = Rect2(96, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmcrb"]
+atlas = ExtResource("15_lslt6")
+region = Rect2(5, 5, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvoow"]
+atlas = ExtResource("16_ulo2v")
+region = Rect2(2, 50, 11, 13)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5fqo"]
+font_size = 12
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ulo2v"]
+texture = ExtResource("17_lslt6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1iu4k"]
+sources/0 = SubResource("TileSetAtlasSource_ulo2v")
 
 [node name="Player" type="CharacterBody2D" unique_id=1290054285 groups=["Player"]]
 collision_mask = 397
 script = ExtResource("1_dewec")
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1970679866]
+limit_left = -480
+limit_right = 496
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = SubResource("GDScript_ksbbd")
@@ -408,7 +587,7 @@ label_settings = SubResource("LabelSettings_megsn")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1406170515]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ukyrk")
-animation = &"Dead"
+animation = &"Roll"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1056833357]
 position = Vector2(0, 1.8)
@@ -423,6 +602,7 @@ script = ExtResource("3_nn08x")
 [node name="Dead" type="Node" parent="StateMachine" unique_id=779157823]
 
 [node name="Roll" type="Node" parent="StateMachine" unique_id=1665779300]
+script = ExtResource("6_o3h8g")
 
 [node name="Hurt" type="Node" parent="StateMachine" unique_id=114774603]
 script = ExtResource("6_yoq75")
@@ -472,7 +652,8 @@ debug_color = Color(0.9311801, 2.820462e-05, 0.6558241, 0.41960785)
 libraries/ = SubResource("AnimationLibrary_miouo")
 
 [node name="PlayerCanvasLayer" type="CanvasLayer" parent="." unique_id=879769367]
-visible = false
+process_mode = 3
+script = SubResource("GDScript_lslt6")
 
 [node name="Menu" type="Control" parent="PlayerCanvasLayer" unique_id=541651197]
 layout_mode = 3
@@ -481,17 +662,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_glx4g")
+theme = ExtResource("13_arntx")
+
+[node name="Inside" type="NinePatchRect" parent="PlayerCanvasLayer/Menu" unique_id=668267064]
+custom_minimum_size = Vector2(385, 185)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.5
+offset_top = -92.5
+offset_right = 192.5
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8p516")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="MenuContainer" type="NinePatchRect" parent="PlayerCanvasLayer/Menu" unique_id=439634930]
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 176.0
-offset_top = 124.0
-offset_right = 176.0
-offset_bottom = 124.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 8.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_teras")
@@ -503,22 +709,25 @@ patch_margin_bottom = 6
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Inside" type="NinePatchRect" parent="PlayerCanvasLayer/Menu" unique_id=668267064]
-custom_minimum_size = Vector2(800, 400)
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerCanvasLayer/Menu" unique_id=70390661]
+custom_minimum_size = Vector2(370, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_left = -185.0
+offset_top = -86.0
+offset_right = 185.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_8p516")
-region_rect = Rect2(-0.255, -0.501, 24.503, 24.903)
+
+[node name="Items" type="NinePatchRect" parent="PlayerCanvasLayer/Menu/VBoxContainer" unique_id=174593840]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vmcrb")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
@@ -526,5 +735,123 @@ patch_margin_bottom = 5
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items" unique_id=461436919]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3" unique_id=1403283200]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer" unique_id=48699773]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fvoow")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer" unique_id=392300165]
+layout_mode = 2
+text = "x90"
+label_settings = SubResource("LabelSettings_v5fqo")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3" unique_id=136042112]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer2" unique_id=1886360092]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fvoow")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer2" unique_id=660349665]
+layout_mode = 2
+text = "x90"
+label_settings = SubResource("LabelSettings_v5fqo")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3" unique_id=1965006746]
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer3" unique_id=2130100633]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fvoow")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/Items/HBoxContainer3/HBoxContainer3" unique_id=121534547]
+layout_mode = 2
+text = "x90"
+label_settings = SubResource("LabelSettings_v5fqo")
+
+[node name="World1" type="VBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer" unique_id=1846339394]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="WorldTitle" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World1" unique_id=469486123]
+layout_mode = 2
+text = "World 1"
+horizontal_alignment = 1
+
+[node name="WorldName" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World1" unique_id=356791989]
+layout_mode = 2
+text = "Green Island"
+horizontal_alignment = 1
+
+[node name="World01" type="TileMapLayer" parent="PlayerCanvasLayer/Menu/VBoxContainer/World1" unique_id=2059671967]
+tile_map_data = PackedByteArray("AAAJAAMAAAAAAAMAAAAJAAQAAAAAAAQAAAAJAAUAAAAAAAUAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAUAAAAAAAcAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAUAAAABAAYAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_1iu4k")
+
+[node name="World2" type="VBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer" unique_id=575749091]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="WorldTitle" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World2" unique_id=1130911978]
+layout_mode = 2
+text = "World 2"
+horizontal_alignment = 1
+
+[node name="WorldName" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World2" unique_id=345205431]
+layout_mode = 2
+text = "Lost Desert"
+horizontal_alignment = 1
+
+[node name="World02" type="TileMapLayer" parent="PlayerCanvasLayer/Menu/VBoxContainer/World2" unique_id=861830694]
+tile_map_data = PackedByteArray("AAAJAAYAAAAEAAAAAAAKAAYAAAAEAAAAAAALAAUAAAAAAAcAAAALAAYAAAAEAAAAAAAMAAYAAAAEAAAAAAANAAUAAAAEAAgAAAANAAYAAAAEAAAAAAAOAAYAAAAEAAAAAAAIAAUAAAAFAAYAAAAIAAYAAAAEAAAAAAAKAAMAAAAFAAMAAAAKAAQAAAAFAAQAAAAKAAUAAAAFAAUAAAA=")
+tile_set = SubResource("TileSet_1iu4k")
+
+[node name="World3" type="VBoxContainer" parent="PlayerCanvasLayer/Menu/VBoxContainer" unique_id=674432466]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="WorldTitle" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World3" unique_id=1428310750]
+layout_mode = 2
+text = "World 3"
+horizontal_alignment = 1
+
+[node name="WorldName" type="Label" parent="PlayerCanvasLayer/Menu/VBoxContainer/World3" unique_id=676802995]
+layout_mode = 2
+text = "Ice Storming"
+horizontal_alignment = 1
+
+[node name="World01" type="TileMapLayer" parent="PlayerCanvasLayer/Menu/VBoxContainer/World3" unique_id=391586708]
+tile_map_data = PackedByteArray("AAAJAAYAAAAHAAAAAAAKAAYAAAAGAAAAAAALAAYAAAAGAAkAAAAMAAYAAAAHAAAAAAANAAYAAAAHAAAAAAAOAAYAAAAGAAIAAAAIAAYAAAAGAAAAAAAMAAUAAAAGAAIAAAAJAAUAAAAAAAgAAAAOAAUAAAAAAAgAAAA=")
+tile_set = SubResource("TileSet_1iu4k")
+
+[connection signal="animation_finished" from="PlayerSprite" to="StateMachine/Roll" method="_on_player_sprite_animation_finished"]
 [connection signal="area_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_area_entered"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

@@ -8,8 +8,6 @@
 atlas = ExtResource("4_mjqtt")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrknh"]
-
 [node name="Settings" type="CanvasLayer" unique_id=672870149]
 script = ExtResource("1_yrknh")
 
@@ -33,52 +31,48 @@ patch_margin_right = 18
 patch_margin_bottom = 18
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Background" unique_id=782181182]
+[node name="Items" type="VBoxContainer" parent="Background" unique_id=1893225852]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
+offset_left = -153.0
 offset_top = -87.5
-offset_right = 128.0
+offset_right = 153.0
 offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_yrknh")
-
-[node name="Items" type="VBoxContainer" parent="Background/PanelContainer" unique_id=1893225852]
-layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 26
 alignment = 1
 
-[node name="Volume" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1824768751]
+[node name="Volume" type="HBoxContainer" parent="Background/Items" unique_id=1824768751]
 layout_mode = 2
 
-[node name="VolumeLabel" type="Label" parent="Background/PanelContainer/Items/Volume" unique_id=1098279148]
+[node name="VolumeLabel" type="Label" parent="Background/Items/Volume" unique_id=1098279148]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 text = "Volume"
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Background/PanelContainer/Items/Volume" unique_id=105051882]
+[node name="HSlider" type="HSlider" parent="Background/Items/Volume" unique_id=105051882]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 value = 50.0
 
-[node name="Language" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1996655028]
+[node name="Language" type="HBoxContainer" parent="Background/Items" unique_id=1996655028]
 layout_mode = 2
 
-[node name="LanguageLabel" type="Label" parent="Background/PanelContainer/Items/Language" unique_id=128716854]
+[node name="LanguageLabel" type="Label" parent="Background/Items/Language" unique_id=128716854]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 text = "Language"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Background/PanelContainer/Items/Language" unique_id=174354515]
+[node name="OptionButton" type="OptionButton" parent="Background/Items/Language" unique_id=174354515]
 layout_mode = 2
 selected = 0
 item_count = 2
@@ -87,19 +81,19 @@ popup/item_0/id = 0
 popup/item_1/text = "English"
 popup/item_1/id = 1
 
-[node name="LastButtons" type="HBoxContainer" parent="Background/PanelContainer/Items" unique_id=1006114496]
+[node name="LastButtons" type="HBoxContainer" parent="Background/Items" unique_id=1006114496]
 layout_mode = 2
 alignment = 1
 
-[node name="Confirm" type="Button" parent="Background/PanelContainer/Items/LastButtons" unique_id=506807354]
+[node name="Confirm" type="Button" parent="Background/Items/LastButtons" unique_id=506807354]
 custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
 text = "Confirm"
 
-[node name="Cancel" type="Button" parent="Background/PanelContainer/Items/LastButtons" unique_id=1927258201]
+[node name="Cancel" type="Button" parent="Background/Items/LastButtons" unique_id=1927258201]
 custom_minimum_size = Vector2(80, 36)
 layout_mode = 2
 text = "Cancel"
 
-[connection signal="pressed" from="Background/PanelContainer/Items/LastButtons/Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="pressed" from="Background/PanelContainer/Items/LastButtons/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Background/Items/LastButtons/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Background/Items/LastButtons/Cancel" to="." method="_on_cancel_pressed"]

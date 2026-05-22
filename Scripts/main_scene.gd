@@ -1,14 +1,10 @@
 extends Control
 
-func _ready() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	pass
-
 func _on_start_game_pressed() -> void:
-	pass
-
+	var start_game = preload("res://Scenes/WorldMap.tscn").instantiate()
+	start_game.current_world = 1
+	get_tree().root.add_child(start_game)
+	queue_free()
 
 func _on_setting_pressed() -> void:
 	GlobalSettings.instantiate_setting_ui()

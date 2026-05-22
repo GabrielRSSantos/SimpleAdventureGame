@@ -161,33 +161,6 @@ sources/0 = SubResource("TileSetAtlasSource_5wnfc")
 atlas = ExtResource("3_5wnfc")
 region = Rect2(9, 9, 13, 19)
 
-[sub_resource type="Animation" id="Animation_6g17r"]
-resource_name = "Jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerSprite:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(88, 183), Vector2(88, 135.11), Vector2(88, 183)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_k2sq4"]
 length = 0.001
 tracks/0/type = "value"
@@ -215,10 +188,93 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_6g17r"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(88, 183), Vector2(88, 135.11), Vector2(88, 183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e6b1v"]
+resource_name = "World02"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(88, 183), Vector2(167.5, 130), Vector2(247, 183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tp53l"]
+resource_name = "World03"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(247, 183), Vector2(311.5, 130), Vector2(376, 183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e6b1v"]
 _data = {
-&"Jump": SubResource("Animation_6g17r"),
-&"RESET": SubResource("Animation_k2sq4")
+&"RESET": SubResource("Animation_k2sq4"),
+&"World01": SubResource("Animation_6g17r"),
+&"World02": SubResource("Animation_e6b1v"),
+&"World03": SubResource("Animation_tp53l")
 }
 
 [node name="WorldMap" type="Control" unique_id=1014472762]
@@ -240,7 +296,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=205075788]
-tile_map_data = PackedByteArray("AAABAAwAAAAGAAkAAAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAALAAwAAAAEAAAAAAAMAAwAAAAEAAAAAAANAAwAAAAEAAAAAAAOAAwAAAAEAAAAAAAPAAwAAAAEAAAAAAAQAAwAAAAEAAAAAAARAAwAAAAEAAAAAAAVAAwAAAAGAAAAAAAWAAwAAAAHAAAAAAAXAAwAAAAGAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAACAAkAAAAAAAMAAAACAAoAAAAAAAQAAAACAAsAAAAAAAUAAAAEAAsAAAAAAAcAAAAGAAsAAAABAAYAAAANAAkAAAAFAAMAAAANAAoAAAAFAAQAAAANAAsAAAAFAAUAAAALAAsAAAAFAAYAAAAQAAsAAAAEAAgAAAAYAAwAAAAGAAkAAAAYAA0AAAAGAAoAAAAWAA0AAAAGAAoAAAAXAA0AAAAGAAoAAAAVAA0AAAAGAAoAAAAZAA0AAAAGAAoAAAAaAA0AAAAGAAoAAAAGAA0AAAAGAAoAAAAHAA0AAAAGAAoAAAAFAA0AAAAGAAoAAAAEAA0AAAAGAAoAAAADAA0AAAAGAAoAAAACAA0AAAAGAAoAAAABAA0AAAAGAAoAAAALAA0AAAAGAAoAAAAMAA0AAAAGAAoAAAANAA0AAAAGAAoAAAAOAA0AAAAGAAoAAAAPAA0AAAAGAAoAAAAQAA0AAAAGAAoAAAARAA0AAAAGAAoAAAAZAAsAAAAGAAIAAAAbAAwAAAAGAAIAAAAbAA0AAAAGAAoAAAAbAA4AAAAGAAoAAAAaAA4AAAAGAAoAAAAZAA4AAAAGAAoAAAAYAA4AAAAGAAoAAAAXAA4AAAAGAAoAAAAWAA4AAAAGAAoAAAAVAA4AAAAGAAoAAAAUAA4AAAAGAAoAAAATAA4AAAAGAAoAAAASAA4AAAAGAAoAAAARAA4AAAAGAAoAAAAQAA4AAAAGAAoAAAAPAA4AAAAGAAoAAAAOAA4AAAAGAAoAAAANAA4AAAAGAAoAAAAKAA0AAAAGAAoAAAAJAA0AAAAGAAoAAAAIAA4AAAAGAAoAAAAHAA4AAAAGAAoAAAAGAA4AAAAGAAoAAAAFAA4AAAAGAAoAAAAEAA4AAAAGAAoAAAADAA4AAAAGAAoAAAACAA4AAAAGAAoAAAABAA4AAAAGAAoAAAAJAA4AAAAGAAoAAAAKAA4AAAAGAAoAAAALAA4AAAAGAAoAAAAIAA0AAAAGAAoAAAAMAA4AAAAGAAoAAAASAA0AAAAGAAoAAAATAA0AAAAGAAoAAAAUAA0AAAAGAAoAAAAcAA0AAAAGAAoAAAAcAA4AAAAGAAoAAAAcAA8AAAAGAAoAAAAKAA8AAAAGAAoAAAAJAA8AAAAGAAoAAAAIAA8AAAAGAAoAAAAHAA8AAAAGAAoAAAAGAA8AAAAGAAoAAAAFAA8AAAAGAAoAAAAEAA8AAAAGAAoAAAADAA8AAAAGAAoAAAACAA8AAAAGAAoAAAABAA8AAAAGAAoAAAAOAA8AAAAGAAoAAAANAA8AAAAGAAoAAAAMAA8AAAAGAAoAAAAPAA8AAAAGAAoAAAAQAA8AAAAGAAoAAAARAA8AAAAGAAoAAAASAA8AAAAGAAoAAAATAA8AAAAGAAoAAAAUAA8AAAAGAAoAAAAVAA8AAAAGAAoAAAAWAA8AAAAGAAoAAAAXAA8AAAAGAAoAAAAYAA8AAAAGAAoAAAAZAA8AAAAGAAoAAAAaAA8AAAAGAAoAAAAbAA8AAAAGAAoAAAALAA8AAAAGAAoAAAAcAAwAAAAGAAkAAAA=")
+tile_map_data = PackedByteArray("AAABAAwAAAAGAAkAAAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAALAAwAAAAEAAAAAAAMAAwAAAAEAAAAAAANAAwAAAAEAAAAAAAOAAwAAAAEAAAAAAAPAAwAAAAEAAAAAAAQAAwAAAAEAAAAAAARAAwAAAAEAAAAAAAVAAwAAAAGAAAAAAAWAAwAAAAHAAAAAAAXAAwAAAAGAAAAAAAZAAwAAAAHAAAAAAAaAAwAAAAHAAAAAAACAAsAAAAAAAUAAAAEAAsAAAAAAAcAAAANAAkAAAAFAAMAAAANAAoAAAAFAAQAAAANAAsAAAAFAAUAAAALAAsAAAAFAAYAAAAQAAsAAAAEAAgAAAAYAAwAAAAGAAkAAAAYAA0AAAAGAAoAAAAWAA0AAAAGAAoAAAAXAA0AAAAGAAoAAAAVAA0AAAAGAAoAAAAZAA0AAAAGAAoAAAAaAA0AAAAGAAoAAAAGAA0AAAAGAAoAAAAHAA0AAAAGAAoAAAAFAA0AAAAGAAoAAAAEAA0AAAAGAAoAAAADAA0AAAAGAAoAAAACAA0AAAAGAAoAAAABAA0AAAAGAAoAAAALAA0AAAAGAAoAAAAMAA0AAAAGAAoAAAANAA0AAAAGAAoAAAAOAA0AAAAGAAoAAAAPAA0AAAAGAAoAAAAQAA0AAAAGAAoAAAARAA0AAAAGAAoAAAAZAAsAAAAGAAIAAAAbAAwAAAAGAAIAAAAbAA0AAAAGAAoAAAAbAA4AAAAGAAoAAAAaAA4AAAAGAAoAAAAZAA4AAAAGAAoAAAAYAA4AAAAGAAoAAAAXAA4AAAAGAAoAAAAWAA4AAAAGAAoAAAAVAA4AAAAGAAoAAAAUAA4AAAAGAAoAAAATAA4AAAAGAAoAAAASAA4AAAAGAAoAAAARAA4AAAAGAAoAAAAQAA4AAAAGAAoAAAAPAA4AAAAGAAoAAAAOAA4AAAAGAAoAAAANAA4AAAAGAAoAAAAKAA0AAAAGAAoAAAAJAA0AAAAGAAoAAAAIAA4AAAAGAAoAAAAHAA4AAAAGAAoAAAAGAA4AAAAGAAoAAAAFAA4AAAAGAAoAAAAEAA4AAAAGAAoAAAADAA4AAAAGAAoAAAACAA4AAAAGAAoAAAABAA4AAAAGAAoAAAAJAA4AAAAGAAoAAAAKAA4AAAAGAAoAAAALAA4AAAAGAAoAAAAIAA0AAAAGAAoAAAAMAA4AAAAGAAoAAAASAA0AAAAGAAoAAAATAA0AAAAGAAoAAAAUAA0AAAAGAAoAAAAcAA0AAAAGAAoAAAAcAA4AAAAGAAoAAAAcAA8AAAAGAAoAAAAKAA8AAAAGAAoAAAAJAA8AAAAGAAoAAAAIAA8AAAAGAAoAAAAHAA8AAAAGAAoAAAAGAA8AAAAGAAoAAAAFAA8AAAAGAAoAAAAEAA8AAAAGAAoAAAADAA8AAAAGAAoAAAACAA8AAAAGAAoAAAABAA8AAAAGAAoAAAAOAA8AAAAGAAoAAAANAA8AAAAGAAoAAAAMAA8AAAAGAAoAAAAPAA8AAAAGAAoAAAAQAA8AAAAGAAoAAAARAA8AAAAGAAoAAAASAA8AAAAGAAoAAAATAA8AAAAGAAoAAAAUAA8AAAAGAAoAAAAVAA8AAAAGAAoAAAAWAA8AAAAGAAoAAAAXAA8AAAAGAAoAAAAYAA8AAAAGAAoAAAAZAA8AAAAGAAoAAAAaAA8AAAAGAAoAAAAbAA8AAAAGAAoAAAALAA8AAAAGAAoAAAAcAAwAAAAGAAkAAAACAAoAAAAAAAQAAAACAAkAAAAAAAMAAAAGAAsAAAABAAYAAAAHAAwAAAAAAAAAAAAbAAsAAAAAAAgAAAAWAAsAAAAAAAgAAAA=")
 tile_set = SubResource("TileSet_nnt0k")
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=2105177036]
@@ -269,7 +325,25 @@ text = "GREEN ISLAND"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1464806298]
 libraries/ = SubResource("AnimationLibrary_e6b1v")
-autoplay = &"Jump"
+autoplay = &"World01"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=767617096]
 stream = ExtResource("5_ovel5")
+
+[node name="Label3" type="Label" parent="." unique_id=211569848]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -47.0
+offset_right = 113.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press E to Start"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

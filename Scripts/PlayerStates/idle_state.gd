@@ -18,5 +18,5 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 
 func handle_input(_event) -> void:
-	if _event.is_action_pressed("E"):
-		finished.emit("Attack")
+	if _event.is_action_pressed("Q"):
+		finished.emit("Roll")
